@@ -20,10 +20,8 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: DockerCompose@0
+- task: Docker@2
   inputs:
-    containerregistrytype: 'Azure Container Registry'
-    azureSubscription: 'Azure for Students(20a3c04e-3dda-4fd9-b131-ae22be725285)'
-    azureContainerRegistry: '{"loginServer":"azcontainerregistry1720.azurecr.io", "id" : "/subscriptions/20a3c04e-3dda-4fd9-b131-ae22be725285/resourceGroups/rg1/providers/Microsoft.ContainerRegistry/registries/azContainerRegistry1720"}'
-    dockerComposeFile: '**/AzureDockerfile'
-    action: 'Run a Docker Compose command'
+    containerRegistry: 'svc1'
+    command: 'buildAndPush'
+    Dockerfile: '**/AzureDockerfile'
