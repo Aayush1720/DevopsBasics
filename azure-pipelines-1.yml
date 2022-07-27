@@ -23,5 +23,6 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'svc1'
+    repository: 'hello'
     command: 'buildAndPush'
     Dockerfile: '**/AzureDockerfile'
